@@ -6,12 +6,12 @@ const { JWT_SECRET } = require("../keys");
 module.exports = (req, res, next) => {
   const { authorization } = req.headers;
   if (!authorization) {
-    res.status(401).json({ error: "You must be logged in 1" });
+    res.status(401).json({ error: "You must be logged in" });
   } else {
     const token = authorization.replace("Sammi ", "");
     jwt.verify(token, JWT_SECRET, (err, payload) => {
       if (err) {
-        return res.status(401).json({ error: "You must be logged in 2" });
+        return res.status(401).json({ error: "You must be logged in" });
       } else {
         const { _id } = payload;
         User.findById(_id).then((userData) => {

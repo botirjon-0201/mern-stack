@@ -11,7 +11,7 @@ const postSchema = new Schema({
   },
   photo: {
     type: String,
-    default: "No photo",
+    required: true,
   },
   postedBy: {
     type: Schema.Types.ObjectId,

@@ -11,14 +11,14 @@ module.exports = (req, res) => {
       if (savedUser) {
         return res
           .status(422)
-          .json({ error: "User already exist with that email" });
+          .json({ error: "Already was signed up with that email" });
       } else {
         bcrypt.hash(password, 10).then((hashedPass) => {
           const user = new User({ name, email, password: hashedPass });
           user
             .save()
             .then((user) => {
-              res.json({ msg: "added successfully" });
+              res.json({ msg: "You have signed up successfully!" });
             })
             .catch((err) => {
               console.log(err);
