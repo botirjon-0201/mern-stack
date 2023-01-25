@@ -8,13 +8,12 @@
 section {
   position: relative;
   min-height: 90vh;
-  background: #fee648;
+  background: rgb(83, 75, 75);
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 20px;
 }
-
 .container {
   position: relative;
   width: 800px;
@@ -111,7 +110,6 @@ section {
 .active .signupBx {
   pointer-events: initial;
 }
-
 .container .signupBx .formBx {
   left: 100%;
 }
@@ -124,7 +122,6 @@ section {
 .active .signupBx .imgBx {
   left: 0;
 }
-
 .container .signinBx .formBx {
   left: 0;
 }

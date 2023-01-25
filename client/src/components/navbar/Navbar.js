@@ -1,50 +1,49 @@
 import React from "react";
 import "./navbar.css";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { setUser } from "../../redux/actions";
 
 function Navbar() {
   const { user } = useSelector((state) => state.user);
   const dispatch = useDispatch();
-  const navigate = useNavigate();
 
   const renderNav = () => {
     if (user) {
       return (
-        <ul id="nav-mobile" className="right hide-on-med-and-down">
+        <ul>
           <li>
-            <Link to={"/profile"}>My profile</Link>
+            <Link to="/profile">
+              <i class="medium material-icons">person</i>
+            </Link>
           </li>
           <li>
-            <Link to={"/createpost"}>Create post</Link>
+            <Link to="/createpost">
+              <i class="medium material-icons">playlist_add</i>
+            </Link>
           </li>
           <li>
-            <button
-              className="btn"
+            <Link
+              style={{ color: "red" }}
               onClick={() => {
                 localStorage.clear();
                 dispatch(setUser(null));
-                navigate("/login");
               }}
+              class="large material-icons"
+              to="/login"
             >
-              Log out
-            </button>
+              <i class="medium material-icons">exit_to_app</i>
+            </Link>{" "}
           </li>
         </ul>
       );
     } else {
       return (
-        <ul id="nav-mobile" className="right hide-on-med-and-down">
+        <ul>
           <li>
-            <button
-              className="btn"
-              onClick={() => {
-                navigate("/login");
-              }}
-            >
-              Log in
-            </button>
+            <Link to="/login">
+              <i class="medium material-icons">input</i>
+            </Link>
           </li>
         </ul>
       );
@@ -52,14 +51,16 @@ function Navbar() {
   };
 
   return (
-    <nav className="white" style={{ height: "10vh" }}>
-      <div className="nav-wrapper container navBg">
-        <Link to={user ? "/" : "/login"} className="brand-logo left">
-          SammiGram
-        </Link>
-        {renderNav()}
+    <div className="navBar">
+      <div className="navigationBar">
+        <div className="mainPage">
+          <Link to={user ? "/" : "/login"}>
+            <i class="medium material-icons">home</i>
+          </Link>
+        </div>
+        <div className="navLink">{renderNav()}</div>
       </div>
-    </nav>
+    </div>
   );
 }
 

@@ -4,6 +4,7 @@ import reg from "./regSlice";
 import log from "./logSlice";
 import home from "./homeSlice";
 import post from "./postSlice";
+import profile from "./profileSlice";
 
 export default combineReducers({
   user,
@@ -11,4 +12,5 @@ export default combineReducers({
   log,
   home,
   post,
+  profile,
 });

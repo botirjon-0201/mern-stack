@@ -1,18 +1,18 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  data: [],
+  posts: [],
 };
 
 export const homeSlice = createSlice({
   name: "home",
   initialState,
   reducers: {
-    setData(state, action) {
-      state.data = action.payload;
+    setPosts(state, action) {
+      state.posts = action.payload;
     },
   },
 });
 
-export const { setData } = homeSlice.actions;
+export const { setPosts } = homeSlice.actions;
 export default homeSlice.reducer;
