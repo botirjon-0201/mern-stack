@@ -4,8 +4,8 @@ import { BrowserRouter, Route, Routes, useNavigate } from "react-router-dom";
 import { CreatePost, Home, Profile, LogIn } from "./pages";
 import { useEffect } from "react";
 import { Provider, useDispatch } from "react-redux";
-import { setUser } from "./redux/reducer";
 import store from "./redux/store";
+import { setUser } from "./redux/actions";
 
 function App() {
   const Routing = () => {
@@ -37,12 +37,7 @@ function App() {
     <Provider store={store}>
       <BrowserRouter>
         <Navbar />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/login" element={<LogIn />} />
-          <Route path="/profile" element={<Profile />} />
-          <Route path="/createpost" element={<CreatePost />} />
-        </Routes>
+        <Routing />
       </BrowserRouter>
     </Provider>
   );

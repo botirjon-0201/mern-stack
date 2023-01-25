@@ -1,31 +1,24 @@
 import React, { useEffect } from "react";
 import "./home.css";
 import { useDispatch, useSelector } from "react-redux";
-import { setData } from "../../redux/reducer";
+import { setData } from "../../redux/actions";
 
 function Home() {
   const { data } = useSelector((state) => state.home);
   const dispatch = useDispatch();
-  // const navigate = useNavigate();
 
   useEffect(() => {
     fetch("/allposts", {
       method: "GET",
       headers: {
-        // "Content-Type": "application/json",
         Authorization: "Sammi " + localStorage.getItem("jwt"),
       },
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         dispatch(setData(data.posts));
-        // if (data.error) {
-        //   M.toast({ html: data.error, classNamees: "#ff1744 red accent-3" });
-        // } else {
-        //   M.toast({ html: data.msg, classNamees: "#2e7d32 green darken-3" });
-        // }
       });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
@@ -53,7 +46,7 @@ function Home() {
         <div className="right__side">
           <div className="card">
             <div className="card-image">
-              <img src="images/sample-1.jpg" alt="post" />
+              <img src="" alt="post" />
               <span className="card-title">Card Title</span>
             </div>
             <div className="card-content">

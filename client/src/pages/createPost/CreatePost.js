@@ -1,29 +1,15 @@
 import React, { useEffect, useState } from "react";
 import "./createPost.css";
 import M from "materialize-css";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { postDetails, setBody, setTitle } from "../../redux/actions";
 
 function CreatePost() {
-  const [title, setTitle] = useState("");
-  const [body, setBody] = useState("");
+  const { title, body, url } = useSelector((state) => state.post);
   const [image, setImage] = useState("");
-  const [url, setUrl] = useState("");
+  const dispatch = useDispatch();
   const navigate = useNavigate();
-
-  const postDetails = () => {
-    const data = new FormData();
-    data.append("file", image);
-    data.append("upload_preset", "sammigram");
-    data.append("cloud_name", "dzafzrmxl");
-
-    fetch("https://api.cloudinary.com/v1_1/dzafzrmxl/image/upload", {
-      method: "POST",
-      body: data,
-    })
-      .then((res) => res.json())
-      .then((data) => setUrl(data.url))
-      .catch((err) => console.log(err));
-  };
 
   useEffect(() => {
     if (url) {
@@ -31,7 +17,7 @@ function CreatePost() {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          // Authorization: "Sammi " + localStorage.getItem("jwt"),
+          Authorization: "Sammi " + localStorage.getItem("jwt"),
         },
         body: JSON.stringify({
           title,
@@ -41,7 +27,6 @@ function CreatePost() {
       })
         .then((res) => res.json())
         .then((data) => {
-          console.log(data);
           if (data.error) {
             M.toast({ html: data.error, classes: "#ff1744 red accent-3" });
           } else {
@@ -89,7 +74,7 @@ function CreatePost() {
             type="text"
             className="validate"
             value={title}
-            onChange={(e) => setTitle(e.target.value)}
+            onChange={(e) => dispatch(setTitle(e.target.value))}
           />
           <label htmlFor="title">Title</label>
         </div>
@@ -100,16 +85,16 @@ function CreatePost() {
             type="text"
             className="validate"
             value={body}
-            onChange={(e) => setBody(e.target.value)}
+            onChange={(e) => dispatch(setBody(e.target.value))}
           />
           <label htmlFor="body">Article</label>
         </div>
-        <button className="btn" onClick={() => postDetails()}>
+        <button className="btn" onClick={() => dispatch(postDetails(image))}>
           Add Article
         </button>
       </div>
     </div>
-  );
+  ); 
 }
 
 export default CreatePost;

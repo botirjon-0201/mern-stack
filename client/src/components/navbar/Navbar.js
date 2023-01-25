@@ -1,7 +1,8 @@
 import React from "react";
+import "./navbar.css";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
-import { setUser } from "../../redux/reducer";
+import { setUser } from "../../redux/actions";
 
 function Navbar() {
   const { user } = useSelector((state) => state.user);
@@ -36,7 +37,14 @@ function Navbar() {
       return (
         <ul id="nav-mobile" className="right hide-on-med-and-down">
           <li>
-            <Link to={"/login"}>Log In</Link>
+            <button
+              className="btn"
+              onClick={() => {
+                navigate("/login");
+              }}
+            >
+              Log in
+            </button>
           </li>
         </ul>
       );

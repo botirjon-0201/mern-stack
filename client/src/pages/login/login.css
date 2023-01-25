@@ -57,7 +57,7 @@ section {
   padding: 40px;
   transition: 0.5s;
 }
-.container .user .formBx form h2 {
+.container .user .formBx div h2 {
   font-size: 18px;
   font-weight: 600;
   text-transform: uppercase;
@@ -67,7 +67,7 @@ section {
   margin-bottom: 10px;
   color: #555;
 }
-.container .user .formBx form input {
+.container .user .formBx div input {
   position: relative;
   width: 100%;
   padding: 10px;
@@ -81,7 +81,7 @@ section {
   letter-spacing: 1px;
   font-weight: 300;
 }
-.container .user .formBx form input[type="submit"] {
+.container .user .formBx div button[type="submit"] {
   max-width: 100px;
   background: #677eff;
   color: #fff;
@@ -91,7 +91,7 @@ section {
   letter-spacing: 1px;
   transition: 0.5s;
 }
-.container .user .formBx form .signup {
+.container .user .formBx div .signup {
   position: relative;
   margin-top: 20px;
   font-size: 12px;
@@ -100,7 +100,7 @@ section {
   text-transform: uppercase;
   font-weight: 300;
 }
-.container .user .formBx form .signup a {
+.container .user .formBx div .signup a {
   font-weight: 600;
   text-decoration: none;
   color: #00000;
