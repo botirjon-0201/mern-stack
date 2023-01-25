@@ -1,5 +1,5 @@
 import "./App.css";
-import Navbar from "./components/Navbar";
+import Navbar from "./components/navbar";
 import { BrowserRouter, Route, Routes, useNavigate } from "react-router-dom";
 import { CreatePost, Home, Profile, LogIn } from "./pages";
 import { useEffect } from "react";
@@ -37,7 +37,12 @@ function App() {
     <Provider store={store}>
       <BrowserRouter>
         <Navbar />
-        <Routing />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<LogIn />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/createpost" element={<CreatePost />} />
+        </Routes>
       </BrowserRouter>
     </Provider>
   );

@@ -1,9 +1,12 @@
 import React from "react";
-import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
+import { setUser } from "../../redux/reducer";
 
 function Navbar() {
   const { user } = useSelector((state) => state.user);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const renderNav = () => {
     if (user) {
@@ -14,6 +17,18 @@ function Navbar() {
           </li>
           <li>
             <Link to={"/createpost"}>Create post</Link>
+          </li>
+          <li>
+            <button
+              className="btn"
+              onClick={() => {
+                localStorage.clear();
+                dispatch(setUser(null));
+                navigate("/login");
+              }}
+            >
+              Log out
+            </button>
           </li>
         </ul>
       );

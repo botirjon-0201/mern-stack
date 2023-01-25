@@ -14,6 +14,9 @@ module.exports = (req, res) => {
   });
   post
     .save()
-    .then((post) => res.json({ post }))
+    .then((post) => {
+      res.json({ post });
+      console.log(posts);
+    })
     .catch((err) => console.log(err));
 };

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import "./createPost.css";
 import M from "materialize-css";
 import { useNavigate } from "react-router-dom";
 

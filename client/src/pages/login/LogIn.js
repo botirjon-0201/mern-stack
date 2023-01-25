@@ -161,7 +161,14 @@ function LogIn() {
                 value={regPassword}
                 onChange={(e) => dispatch(setRegPassword(e.target.value))}
               />
-              <input type="submit" value="Sign Up" onClick={() => regData()} />
+              <input
+                type="submit"
+                value="Sign Up"
+                onClick={() => {
+                  console.log(`onclick...`);
+                  regData();
+                }}
+              />
               <p className="signup">
                 Already have an account ?
                 <a href="#!" onClick={() => dispatch(setClicked(!clicked))}>

@@ -4,8 +4,8 @@ const createPostController = require("../controllers/createPost");
 const getAllPostsController = require("../controllers/getAllPosts");
 const getMyPostsController = require("../controllers/getMyPosts");
 
-router.get("/allposts", loginMiddleware, getAllPostsController);
-router.post("/createpost", loginMiddleware, createPostController);
+router.get("/allposts", getAllPostsController); // loginMiddleware
+router.post("/createpost",  createPostController); // loginMiddleware
 router.get("/myposts", loginMiddleware, getMyPostsController);
 
 module.exports = router;
