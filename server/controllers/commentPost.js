@@ -4,7 +4,7 @@ const Post = mongoose.model("Post");
 module.exports = (req, res) => {
   const comment = {
     text: req.body.text,
-    postedBy: req.user._id,
+    postedBy: req.user,
   };
   Post.findByIdAndUpdate(
     req.body.postId,
