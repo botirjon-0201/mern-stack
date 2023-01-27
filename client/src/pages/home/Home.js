@@ -14,7 +14,7 @@ import HomeSideBar from "../homeSideBar";
 function Home() {
   const { posts, showComments } = useSelector((state) => state.home);
   const dispatch = useDispatch();
-  console.log(posts)
+  console.log(posts);
   useEffect(() => {
     fetch("/allposts", {
       method: "GET",
