@@ -5,7 +5,6 @@ import {
   commentPost,
   dislikePost,
   likePost,
-  setMyPosts,
   setPosts,
   setShowComments,
 } from "../../redux/actions";
@@ -14,7 +13,7 @@ import HomeSideBar from "../homeSideBar";
 function Home() {
   const { posts, showComments } = useSelector((state) => state.home);
   const dispatch = useDispatch();
-  console.log(posts);
+
   useEffect(() => {
     fetch("/allposts", {
       method: "GET",
@@ -26,15 +25,6 @@ function Home() {
       .then((data) => {
         dispatch(setPosts(data.posts));
       });
-
-    fetch("/myposts", {
-      method: "GET",
-      headers: {
-        Authorization: "Sammi " + localStorage.getItem("jwt"),
-      },
-    })
-      .then((res) => res.json())
-      .then((data) => dispatch(setMyPosts(data.myPosts)));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

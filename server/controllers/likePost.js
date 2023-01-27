@@ -36,6 +36,21 @@ module.exports = (req, res) => {
             req.body.postId,
             {
               $pull: { dislikes: attitude },
+              $push: { likes: attitude },
+            },
+            { new: true }
+          ).exec((err, result) => {
+            if (err) {
+              return res.status(422).json({ error: err });
+            } else {
+              res.json(result);
+            }
+          });
+        } else {
+          Post.findByIdAndUpdate(
+            req.body.postId,
+            {
+              $push: { likes: attitude },
             },
             { new: true }
           ).exec((err, result) => {
@@ -46,19 +61,6 @@ module.exports = (req, res) => {
             }
           });
         }
-        Post.findByIdAndUpdate(
-          req.body.postId,
-          {
-            $push: { likes: attitude },
-          },
-          { new: true }
-        ).exec((err, result) => {
-          if (err) {
-            return res.status(422).json({ error: err });
-          } else {
-            res.json(result);
-          }
-        });
       }
     })
     .catch((err) => {

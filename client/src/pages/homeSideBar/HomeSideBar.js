@@ -1,8 +1,25 @@
-import React from "react";
-import { useSelector } from "react-redux";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { setMyPosts } from "../../redux/actions";
 
 function HomeSideBar() {
   const { myPosts } = useSelector((state) => state.profile);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    fetch("/myposts", {
+      method: "GET",
+      headers: {
+        Authorization: "Sammi " + localStorage.getItem("jwt"),
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        dispatch(setMyPosts(data.myPosts))
+      } );
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
 
   return (
     <>
