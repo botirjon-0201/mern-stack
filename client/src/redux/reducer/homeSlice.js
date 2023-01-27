@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   posts: [],
+  showComments: false,
 };
 
 export const homeSlice = createSlice({
@@ -11,8 +12,11 @@ export const homeSlice = createSlice({
     setPosts(state, action) {
       state.posts = action.payload;
     },
+    setShowComments(state, action) {
+      state.showComments = action.payload;
+    },
   },
 });
 
-export const { setPosts } = homeSlice.actions;
+export const { setPosts, setShowComments } = homeSlice.actions;
 export default homeSlice.reducer;

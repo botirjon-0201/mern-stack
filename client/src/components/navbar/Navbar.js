@@ -14,12 +14,12 @@ function Navbar() {
         <ul>
           <li>
             <Link to="/profile">
-              <i class="medium material-icons">person</i>
+              <i className="medium material-icons">person</i>
             </Link>
           </li>
           <li>
             <Link to="/createpost">
-              <i class="medium material-icons">playlist_add</i>
+              <i className="medium material-icons">playlist_add</i>
             </Link>
           </li>
           <li>
@@ -29,10 +29,10 @@ function Navbar() {
                 localStorage.clear();
                 dispatch(setUser(null));
               }}
-              class="large material-icons"
+              className="large material-icons"
               to="/login"
             >
-              <i class="medium material-icons">exit_to_app</i>
+              <i className="medium material-icons">exit_to_app</i>
             </Link>{" "}
           </li>
         </ul>
@@ -42,7 +42,7 @@ function Navbar() {
         <ul>
           <li>
             <Link to="/login">
-              <i class="medium material-icons">input</i>
+              <i className="medium material-icons">input</i>
             </Link>
           </li>
         </ul>
@@ -55,7 +55,7 @@ function Navbar() {
       <div className="navigationBar">
         <div className="mainPage">
           <Link to={user ? "/" : "/login"}>
-            <i class="medium material-icons">home</i>
+            <i className="medium material-icons">home</i>
           </Link>
         </div>
         <div className="navLink">{renderNav()}</div>

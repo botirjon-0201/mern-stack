@@ -24,14 +24,69 @@
   font-family: "Grand Hotel", cursive;
   color: white;
 }
+.card-title {
+  padding-left: 1rem;
+}
 .postedBy {
   text-transform: capitalize;
   letter-spacing: 2px;
   font-weight: 600;
-  padding: 10px 0;
+}
+.card .card-content {
+  padding-top: 10px;
 }
 .post-title {
   margin: 10px 0;
+}
+.like-dislike {
+  display: flex;
+}
+.like {
+  display: flex;
+  padding-right: 2rem;
+}
+.like .material-icons {
+  vertical-align: middle;
+  padding-right: 0.5rem;
+  cursor: pointer;
+}
+.like span {
+  vertical-align: middle;
+  font-size: 1.2rem;
+}
+.dislike {
+  display: flex;
+  padding-right: 2rem;
+}
+.dislike .material-icons {
+  vertical-align: middle;
+  padding-right: 0.5rem;
+  cursor: pointer;
+}
+.dislike span {
+  vertical-align: middle;
+  font-size: 1.2rem;
+}
+.comment {
+  display: flex;
+  padding-right: 2rem;
+}
+.comment .material-icons {
+  vertical-align: middle;
+  padding-right: 0.5rem;
+  cursor: pointer;
+}
+.comment span {
+  vertical-align: middle;
+  font-size: 1.2rem;
+}
+.comment-post {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  padding: 5px;
+  margin-top: 5px;
 }
 
 @media screen and (max-width: 700px) {

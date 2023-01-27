@@ -3,7 +3,7 @@ import "./createPost.css";
 import M from "materialize-css";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { postDetails, setBody, setTitle } from "../../redux/actions";
+import { postDetails, setBody, setTitle, setUrl } from "../../redux/actions";
 
 function CreatePost() {
   const { title, body, url } = useSelector((state) => state.post);
@@ -35,6 +35,9 @@ function CreatePost() {
               classes: "#2e7d32 green darken-3",
             });
             navigate("/");
+            dispatch(setTitle(""));
+            dispatch(setBody(""));
+            dispatch(setUrl(""));
           }
         });
     }
@@ -94,7 +97,7 @@ function CreatePost() {
         </button>
       </div>
     </div>
-  ); 
+  );
 }
 
 export default CreatePost;
