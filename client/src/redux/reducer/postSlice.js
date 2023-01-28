@@ -4,6 +4,9 @@ const initialState = {
   title: "",
   body: "",
   url: "",
+  posts: [],
+  myPosts: [],
+  showComments: false,
 };
 
 export const postSlice = createSlice({
@@ -19,8 +22,24 @@ export const postSlice = createSlice({
     setUrl(state, action) {
       state.url = action.payload;
     },
+    setPosts(state, action) {
+      state.posts = action.payload;
+    },
+    setMyPosts(state, action) {
+      state.myPosts = action.payload;
+    },
+    setShowComments(state, action) {
+      state.showComments = action.payload;
+    },
   },
 });
 
-export const { setTitle, setBody, setUrl } = postSlice.actions;
+export const {
+  setTitle,
+  setBody,
+  setUrl,
+  setPosts,
+  setMyPosts,
+  setShowComments,
+} = postSlice.actions;
 export default postSlice.reducer;

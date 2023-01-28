@@ -1,6 +1,6 @@
-import { setPosts } from "../reducer/homeSlice";
+import { setPosts } from "../reducer/postSlice";
 
-export const dislikePost = (id, posts) => (dispatch) => {
+export const dislikePost = (postId, posts) => (dispatch) => {
   fetch("/dislike", {
     method: "PUT",
     headers: {
@@ -8,7 +8,7 @@ export const dislikePost = (id, posts) => (dispatch) => {
       Authorization: "Sammi " + localStorage.getItem("jwt"),
     },
     body: JSON.stringify({
-      postId: id,
+      postId,
     }),
   })
     .then((res) => res.json())

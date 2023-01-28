@@ -3,6 +3,7 @@ import "./home.css";
 import { useDispatch, useSelector } from "react-redux";
 import {
   commentPost,
+  deletePost,
   dislikePost,
   likePost,
   setPosts,
@@ -11,7 +12,8 @@ import {
 import HomeSideBar from "../homeSideBar";
 
 function Home() {
-  const { posts, showComments } = useSelector((state) => state.home);
+  const { posts, myPosts, showComments } = useSelector((state) => state.post);
+  const { user } = useSelector((state) => state.user);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -46,7 +48,7 @@ function Home() {
                       <img src={post.photo} alt={post._id} />
                     </div>
                     <div className="card-content">
-                      <div className="like-dislike">
+                      <div className="post-icons">
                         <div className="like">
                           <i
                             className="material-icons"
@@ -77,6 +79,18 @@ function Home() {
                             comment
                           </i>
                           <span>{post.comments.length}</span>
+                        </div>
+                        <div className="delete-post">
+                          {post.postedBy._id === user._id && (
+                            <i
+                              className="material-icons"
+                              onClick={() =>
+                                dispatch(deletePost(post._id, posts, myPosts))
+                              }
+                            >
+                              delete_forever
+                            </i>
+                          )}
                         </div>
                       </div>
                       <h4 className="post-title">{post.title}</h4>

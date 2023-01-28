@@ -1,4 +1,4 @@
-import { setPosts } from "../reducer/homeSlice";
+import { setPosts } from "../reducer/postSlice";
 
 export const likePost = (postId, posts) => (dispatch) => {
   fetch("/like", {

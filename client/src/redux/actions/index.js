@@ -1,15 +1,21 @@
 import { setUser, setClicked } from "../reducer/userSlice";
 import { setRegName, setRegEmail, setRegPassword } from "../reducer/regSlice";
 import { setLogEmail, setLogPassword } from "../reducer/logSlice";
-import { setPosts, setShowComments } from "../reducer/homeSlice";
-import { setTitle, setBody, setUrl } from "../reducer/postSlice";
-import { setMyPosts } from "../reducer/profileSlice";
+import {
+  setTitle,
+  setBody,
+  setUrl,
+  setPosts,
+  setMyPosts,
+  setShowComments,
+} from "../reducer/postSlice";
 import { regData } from "./regData";
 import { logData } from "./logData";
 import { postDetails } from "./postDetails";
 import { likePost } from "./likePost";
 import { dislikePost } from "./dislikePost";
 import { commentPost } from "./commentPost";
+import { deletePost } from "./deletePost";
 
 export {
   setUser,
@@ -19,10 +25,10 @@ export {
   setRegPassword,
   setLogEmail,
   setLogPassword,
-  setPosts,
   setTitle,
   setBody,
   setUrl,
+  setPosts,
   setMyPosts,
   regData,
   logData,
@@ -31,4 +37,5 @@ export {
   dislikePost,
   commentPost,
   setShowComments,
+  deletePost,
 };

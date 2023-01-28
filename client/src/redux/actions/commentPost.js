@@ -1,4 +1,4 @@
-import { setPosts } from "../reducer/homeSlice";
+import { setPosts } from "../reducer/postSlice";
 
 export const commentPost = (text, postId, posts) => (dispatch) => {
   fetch("/comments", {

@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setMyPosts } from "../../redux/actions";
 
 function Profile() {
-  const { myPosts } = useSelector((state) => state.profile);
+  const { myPosts } = useSelector((state) => state.post);
   const dispatch = useDispatch();
 
   useEffect(() => {

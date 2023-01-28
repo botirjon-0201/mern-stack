@@ -1,7 +1,8 @@
 .home {
   width: 100%;
   min-height: 90vh;
-  background: #555;
+  background: rgba(0, 0, 0, 0.4);
+  margin-top: 50px;
 }
 .post__items {
   display: grid;
@@ -38,8 +39,9 @@
 .post-title {
   margin: 10px 0;
 }
-.like-dislike {
+.post-icons {
   display: flex;
+  padding: 5px 0;
 }
 .like {
   display: flex;
@@ -88,6 +90,17 @@
   padding: 5px;
   margin-top: 5px;
 }
+.delete-post {
+  display: flex;
+  padding-right: 2rem;
+}
+.delete-post .material-icons {
+  vertical-align: middle;
+  padding-right: 0.5rem;
+  cursor: pointer;
+}
+
+
 
 @media screen and (max-width: 700px) {
   .post__items {

@@ -8,11 +8,12 @@
 section {
   position: relative;
   min-height: 90vh;
-  background: rgb(83, 75, 75);
+  background: rgba(0, 0, 0, 0.3);
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 20px;
+  margin-top: 60px;
 }
 .container {
   position: relative;

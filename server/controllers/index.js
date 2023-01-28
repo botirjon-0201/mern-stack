@@ -6,6 +6,8 @@ const getMyPostsController = require("./getMyPosts");
 const likePostController = require("./likePost");
 const dislikePostController = require("./dislikePost");
 const commentPostController = require("./commentPost");
+const deletePostController = require("./deletePost");
+const getUserController = require("./getUser");
 
 module.exports = {
   signupController,
@@ -16,4 +18,6 @@ module.exports = {
   likePostController,
   dislikePostController,
   commentPostController,
+  deletePostController,
+  getUserController,
 };
