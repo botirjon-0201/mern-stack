@@ -1,7 +1,7 @@
 import "./App.css";
 import Navbar from "./components/navbar";
 import { BrowserRouter, Route, Routes, useNavigate } from "react-router-dom";
-import { CreatePost, Home, Profile, LogIn } from "./pages";
+import { CreatePost, Home, Profile, LogIn, UserProfile } from "./pages";
 import { useEffect } from "react";
 import { Provider, useDispatch } from "react-redux";
 import store from "./redux/store";
@@ -16,7 +16,7 @@ function App() {
       const user = JSON.parse(localStorage.getItem("user"));
       if (user) {
         dispatch(setUser(user));
-        navigate("/");
+        // navigate("/");
       } else {
         navigate("/login");
       }
@@ -29,6 +29,7 @@ function App() {
         <Route path="/login" element={<LogIn />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/createpost" element={<CreatePost />} />
+        <Route path="/profile/:userId" element={<UserProfile />} />
       </Routes>
     );
   };

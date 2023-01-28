@@ -2,9 +2,12 @@ import React, { useEffect } from "react";
 import "./profile.css";
 import { useDispatch, useSelector } from "react-redux";
 import { setMyPosts } from "../../redux/actions";
+import { NotFound } from "../../components";
 
 function Profile() {
+  const { user } = useSelector((state) => state.user);
   const { myPosts } = useSelector((state) => state.post);
+
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -16,6 +19,7 @@ function Profile() {
     })
       .then((res) => res.json())
       .then((data) => dispatch(setMyPosts(data.myPosts)));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
@@ -29,24 +33,29 @@ function Profile() {
           />
         </div>
         <div>
-          <h4>Botirjon Umurzoqov</h4>
+          <h4>{user && user.name}</h4>
           <div className="infoProfile">
-            <p>99 posts</p>
+            <p>{myPosts.length} posts</p>
             <p>99 followers</p>
             <p>99 following</p>
           </div>
         </div>
       </div>
-      <div className="gallery">
-        {myPosts &&
-          myPosts.map((myPost) => {
+      {myPosts.length ? (
+        myPosts
+          .map((myPost) => {
             return (
-              <div key={myPost._id} className="img-item">
-                <img src={myPost.photo} alt={myPost._id} />
+              <div className="gallery">
+                <div key={myPost._id} className="img-item">
+                  <img src={myPost.photo} alt={myPost._id} />
+                </div>
               </div>
             );
-          }).reverse()}
-      </div>
+          })
+          .reverse()
+      ) : (
+        <NotFound />
+      )}
     </div>
   );
 }

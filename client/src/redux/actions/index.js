@@ -1,4 +1,4 @@
-import { setUser, setClicked } from "../reducer/userSlice";
+import { setUser, setProfile, setClicked } from "../reducer/userSlice";
 import { setRegName, setRegEmail, setRegPassword } from "../reducer/regSlice";
 import { setLogEmail, setLogPassword } from "../reducer/logSlice";
 import {
@@ -19,6 +19,7 @@ import { deletePost } from "./deletePost";
 
 export {
   setUser,
+  setProfile,
   setClicked,
   setRegName,
   setRegEmail,

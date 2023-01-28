@@ -1,11 +1,17 @@
 const mongoose = require("mongoose");
 const Post = mongoose.model("Post");
 const User = mongoose.model("User");
+const ObjectId = require("mongodb").ObjectId;
 
 module.exports = (req, res) => {
-  User.findOne({ _id: req.params.id })
+  User.findById(req.params.id)
+    .select("-password")
     .then((user) => {
-      Post.find({ postedBy: req.params.id })
+      const userId = new ObjectId(req.params.id);
+      Post.find;
+      Post.find({
+        postedBy: { _id: userId, name: user.name },
+      })
         .populate("postedBy", "_id name")
         .exec((err, posts) => {
           if (err) {

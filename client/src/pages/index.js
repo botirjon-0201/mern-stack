@@ -2,6 +2,6 @@ import Home from "./home";
 import Profile from "./profile";
 import LogIn from "./login";
 import CreatePost from "./createPost";
-import HomeSideBar from "./homeSideBar";
+import UserProfile from "./userProfile";
 
-export { Home, Profile, LogIn, CreatePost, HomeSideBar };
+export { Home, Profile, LogIn, CreatePost, UserProfile };
