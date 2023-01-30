@@ -51,7 +51,7 @@ function CreatePost() {
           src="https://images.unsplash.com/photo-1486916856992-e4db22c8df33?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTZ8fHBob3RvZ3JhcGh5fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=400&q=60"
           alt="postImg"
         />
-        <span className="card-title">Article</span>
+        <span className="card-title">Post</span>
         <a href="#!" className="btn-floating halfway-fab red">
           <div className="file-field input-field add-file">
             <div className="center">
@@ -90,10 +90,13 @@ function CreatePost() {
             value={body}
             onChange={(e) => dispatch(setBody(e.target.value))}
           />
-          <label htmlFor="body">Article</label>
+          <label htmlFor="body">Post</label>
         </div>
-        <button className="btn" onClick={() => dispatch(postDetails(image))}>
-          Add Article
+        <button
+          className="btn #2962ff blue accent-4"
+          onClick={() => dispatch(postDetails(image))}
+        >
+          Add Post
         </button>
       </div>
     </div>

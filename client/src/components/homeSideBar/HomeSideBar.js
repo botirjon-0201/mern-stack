@@ -14,8 +14,8 @@ function HomeSideBar() {
       },
     })
       .then((res) => res.json())
-      .then((data) => {
-        dispatch(setMyPosts(data.myPosts));
+      .then((myPosts) => {
+        dispatch(setMyPosts(myPosts));
       });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

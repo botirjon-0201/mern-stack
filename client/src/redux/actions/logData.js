@@ -31,13 +31,13 @@ export const logData = (props) => (dispatch) => {
         if (data.error) {
           M.toast({ html: data.error, classes: "#ff1744 red accent-3" });
         } else {
-          localStorage.setItem("jwt", data.token);
-          localStorage.setItem("user", JSON.stringify(data.user));
-          dispatch(setUser(data.user));
           M.toast({
             html: "You have signed in successfully!",
             classes: "#2e7d32 green darken-3",
           });
+          localStorage.setItem("jwt", data.token);
+          localStorage.setItem("user", JSON.stringify(data.user));
+          dispatch(setUser(data.user));
           dispatch(setLogEmail(""));
           dispatch(setLogPassword(""));
           navigate("/");

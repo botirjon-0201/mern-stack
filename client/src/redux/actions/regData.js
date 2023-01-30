@@ -3,7 +3,7 @@ import { setRegEmail, setRegName, setRegPassword } from "../reducer/regSlice";
 import { setClicked } from "../reducer/userSlice";
 
 export const regData = (props) => (dispatch) => {
-  const { regName, regEmail, regPassword, clicked } = props;
+  const { regName, regEmail, regPassword, clicked, url } = props;
 
   /* eslint-disable no-useless-escape */
   if (
@@ -25,6 +25,7 @@ export const regData = (props) => (dispatch) => {
         name: regName,
         email: regEmail,
         password: regPassword,
+        photo: url
       }),
     })
       .then((res) => res.json())

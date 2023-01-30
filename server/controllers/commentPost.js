@@ -4,8 +4,9 @@ const Post = mongoose.model("Post");
 module.exports = (req, res) => {
   const comment = {
     text: req.body.text,
-    postedBy: req.user,
+    postedBy: req.user.id,
   };
+  
   Post.findByIdAndUpdate(
     req.body.postId,
     {
@@ -18,6 +19,7 @@ module.exports = (req, res) => {
       if (err) {
         return res.status(422).json({ error: err });
       } else {
+        console.log(result.comments[0].postedBy)
         res.json(result);
       }
     });

@@ -14,10 +14,13 @@ module.exports = (req, res) => {
         if (savedUser) {
           bcrypt.compare(password, savedUser.password).then((doMatch) => {
             if (doMatch) {
-              //   res.json({ msg: "Successfully signed in" });
               const token = jwt.sign({ _id: savedUser._id }, JWT_SECRET);
-              const { _id, name, email } = savedUser;
-              res.json({ token, user: { _id, name, email } });
+              const { _id, name, email, photo, followers, following } =
+                savedUser;
+              res.json({
+                token,
+                user: { _id, name, email, photo, followers, following },
+              });
             } else {
               res.status(422).json({ error: "Invalid password" });
             }

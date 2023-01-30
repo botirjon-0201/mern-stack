@@ -3,10 +3,10 @@ import "./userProfile.css";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { Loader } from "../../components";
-import { setProfile } from "../../redux/actions";
+import { followUser, setProfile, unfollowUser } from "../../redux/actions";
 
 function UserProfile() {
-  const { profile } = useSelector((state) => state.user);
+  const { profile, follow } = useSelector((state) => state.user);
   const { userId } = useParams();
   const dispatch = useDispatch();
 
@@ -40,8 +40,20 @@ function UserProfile() {
               <h4>{profile.user.name}</h4>
               <div className="infoProfile">
                 <p>{profile.posts.length} posts</p>
-                <p>99 followers</p>
-                <p>99 following</p>
+                <p>{profile.user.followers.length} followers</p>
+                <p>{profile.user.following.length} following</p>
+              </div>
+              <div className="follow">
+                <button
+                  className="btn #2962ff blue accent-4"
+                  onClick={() =>
+                    follow
+                      ? dispatch(unfollowUser(userId, profile))
+                      : dispatch(followUser(userId, profile))
+                  }
+                >
+                  {follow ? "Un follow" : "Follow"}
+                </button>
               </div>
             </div>
           </div>

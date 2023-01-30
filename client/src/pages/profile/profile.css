@@ -20,6 +20,12 @@
   justify-content: space-between;
   width: 100%;
 }
+.followers,
+.following {
+  padding-left: 10px;
+  color: blue;
+}
+
 .gallery {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
@@ -30,6 +36,6 @@
   flex-direction: column;
   height: 250px;
 }
-.img-item img{
+.img-item img {
   height: 100%;
 }

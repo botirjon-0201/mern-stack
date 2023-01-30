@@ -10,7 +10,7 @@ module.exports = (req, res) => {
     title,
     body,
     photo,
-    postedBy: req.user,
+    postedBy: req.user._id,
   });
   post
     .save()

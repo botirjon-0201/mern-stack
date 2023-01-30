@@ -1,5 +1,15 @@
-import { setUser, setProfile, setClicked } from "../reducer/userSlice";
-import { setRegName, setRegEmail, setRegPassword } from "../reducer/regSlice";
+import {
+  setUser,
+  setProfile,
+  setClicked,
+  setFollow,
+} from "../reducer/userSlice";
+import {
+  setRegName,
+  setRegEmail,
+  setRegPassword,
+  setIsOpenModal,
+} from "../reducer/regSlice";
 import { setLogEmail, setLogPassword } from "../reducer/logSlice";
 import {
   setTitle,
@@ -16,14 +26,19 @@ import { likePost } from "./likePost";
 import { dislikePost } from "./dislikePost";
 import { commentPost } from "./commentPost";
 import { deletePost } from "./deletePost";
+import { followUser } from "./followUser";
+import { unfollowUser } from "./unfollowUser";
+import { uploadPhoto } from "./uploadPhoto";
 
 export {
   setUser,
   setProfile,
   setClicked,
+  setFollow,
   setRegName,
   setRegEmail,
   setRegPassword,
+  setIsOpenModal,
   setLogEmail,
   setLogPassword,
   setTitle,
@@ -39,4 +54,7 @@ export {
   commentPost,
   setShowComments,
   deletePost,
+  followUser,
+  unfollowUser,
+  uploadPhoto,
 };

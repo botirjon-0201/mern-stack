@@ -15,28 +15,14 @@ const postSchema = new Schema({
   },
   likes: [
     {
-      clickBy: {
-        _id: {
-          type: Schema.Types.ObjectId,
-          ref: "User",
-        },
-        name: {
-          type: String,
-        },
-      },
+      type: Schema.Types.ObjectId,
+      ref: "User",
     },
   ],
   dislikes: [
     {
-      clickBy: {
-        _id: {
-          type: Schema.Types.ObjectId,
-          ref: "User",
-        },
-        name: {
-          type: String,
-        },
-      },
+      type: Schema.Types.ObjectId,
+      ref: "User",
     },
   ],
   comments: [
@@ -49,13 +35,8 @@ const postSchema = new Schema({
     },
   ],
   postedBy: {
-    _id: {
-      type: Schema.Types.ObjectId,
-      ref: "User",
-    },
-    name: {
-      type: String,
-    },
+    type: Schema.Types.ObjectId,
+    ref: "User",
   },
 });
 

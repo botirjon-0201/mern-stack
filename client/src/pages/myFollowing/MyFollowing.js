@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import "./home.css";
+import "./myFollowing.css";
 import { useDispatch, useSelector } from "react-redux";
 import {
   commentPost,
@@ -12,13 +12,13 @@ import {
 import { HomeSideBar, Loader } from "../../components";
 import { Link } from "react-router-dom";
 
-function Home() {
+function MyFollowing() {
   const { posts, myPosts, showComments } = useSelector((state) => state.post);
   const { user } = useSelector((state) => state.user);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    fetch("/allposts", {
+    fetch("/myfollowing", {
       method: "GET",
       headers: {
         Authorization: "Sammi " + localStorage.getItem("jwt"),
@@ -37,7 +37,7 @@ function Home() {
         <div className="home">
           <div className="post__items">
             <div className="left__side">
-              <h2>All Posts</h2>
+              <h2>Posts by Users I follow</h2>
               {posts &&
                 posts
                   .map((post) => {
@@ -45,7 +45,7 @@ function Home() {
                       <div key={post._id} className="card">
                         <Link
                           to={
-                            post.postedBy === user._id
+                            post.postedBy._id === user._id
                               ? "/profile"
                               : `/profile/${post.postedBy._id}`
                           }
@@ -116,10 +116,7 @@ function Home() {
                             ? post.comments &&
                               post.comments.map((comment) => {
                                 return (
-                                  <div
-                                    key={comment._id}
-                                    className="comment-post"
-                                  >
+                                  <div key={comment._id} className="comment-post">
                                     <p>{comment.text}</p>
                                     <p>
                                       Posted by: <b>{comment.postedBy.name}</b>
@@ -158,4 +155,4 @@ function Home() {
   );
 }
 
-export default Home;
+export default MyFollowing;

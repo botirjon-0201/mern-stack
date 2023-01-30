@@ -3,11 +3,11 @@ import "./profile.css";
 import { useDispatch, useSelector } from "react-redux";
 import { setMyPosts } from "../../redux/actions";
 import { NotFound } from "../../components";
+import { Link } from "react-router-dom";
 
 function Profile() {
   const { user } = useSelector((state) => state.user);
   const { myPosts } = useSelector((state) => state.post);
-
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -18,7 +18,7 @@ function Profile() {
       },
     })
       .then((res) => res.json())
-      .then((data) => dispatch(setMyPosts(data.myPosts)));
+      .then((myPosts) => dispatch(setMyPosts(myPosts)));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -35,9 +35,13 @@ function Profile() {
         <div>
           <h4>{user && user.name}</h4>
           <div className="infoProfile">
-            <p>{myPosts.length} posts</p>
-            <p>99 followers</p>
-            <p>99 following</p>
+            <p className="posts">{myPosts.length} posts</p>
+            <Link to={"/myfollowers"}>
+              <p className="followers">{user && user.followers.length} followers</p>
+            </Link>
+            <Link to={"/myfollowing"}>
+              <p className="following">{user && user.following.length} following</p>
+            </Link>
           </div>
         </div>
       </div>
@@ -45,8 +49,8 @@ function Profile() {
         myPosts
           .map((myPost) => {
             return (
-              <div className="gallery">
-                <div key={myPost._id} className="img-item">
+              <div key={myPost._id} className="gallery">
+                <div className="img-item">
                   <img src={myPost.photo} alt={myPost._id} />
                 </div>
               </div>
@@ -61,5 +65,3 @@ function Profile() {
 }
 
 export default Profile;
-
-// src="https://images.unsplash.com/photo-1494959764136-6be9eb3c261e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTZ8fHBlcnNvbnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60"

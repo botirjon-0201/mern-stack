@@ -3,7 +3,7 @@ const User = mongoose.model("User");
 const bcrypt = require("bcryptjs");
 
 module.exports = (req, res) => {
-  const { name, email, password } = req.body;
+  const { name, email, password, photo } = req.body;
   if (!name || !email || !password) {
     res.status(422).json({ error: "Please, add all the fields" });
   } else {
@@ -14,7 +14,12 @@ module.exports = (req, res) => {
           .json({ error: "Already was signed up with that email" });
       } else {
         bcrypt.hash(password, 10).then((hashedPass) => {
-          const user = new User({ name, email, password: hashedPass });
+          const user = new User({
+            name,
+            email,
+            password: hashedPass,
+            photo,
+          });
           user
             .save()
             .then((user) => {

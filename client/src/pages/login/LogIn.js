@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./login.css";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -6,21 +6,35 @@ import {
   logData,
   regData,
   setClicked,
+  setIsOpenModal,
   setLogEmail,
   setLogPassword,
   setRegEmail,
   setRegName,
   setRegPassword,
+  uploadPhoto,
 } from "../../redux/actions";
 
 function LogIn() {
-  const { regName, regEmail, regPassword } = useSelector((state) => state.reg);
+  const { regName, regEmail, regPassword, isOpenModal } = useSelector(
+    (state) => state.reg
+  );
   const { logEmail, logPassword } = useSelector((state) => state.log);
   const { clicked } = useSelector((state) => state.user);
+  const {url} = useSelector(state=>state.post)
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const regDatas = { regName, regEmail, regPassword, clicked };
+  const regDatas = { regName, regEmail, regPassword, clicked, url };
   const logDatas = { logEmail, logPassword, navigate };
+  const [image, setImage] = useState("");
+
+  const postData = () => {
+    if (image) {
+      uploadPhoto(image);
+    } else {
+      regData(regDatas);
+    }
+  };
 
   return (
     <section>
@@ -66,7 +80,24 @@ function LogIn() {
         <div className="user signupBx">
           <div className="formBx">
             <div>
-              <h2>Create an Account</h2>
+              <div className="avatar-login">
+                <div className="containers">
+                  <img
+                    src="https://res.cloudinary.com/dzafzrmxl/image/upload/v1675005677/User-avatar.svg_eivvxo.png"
+                    alt="Avatar"
+                    className="images"
+                  />
+                  <div className="middles">
+                    <button
+                      className="btn #2962ff blue accent-4"
+                      onClick={() => dispatch(setIsOpenModal(true))}
+                    >
+                      <i className="material-icons">add_a_photo</i>
+                    </button>
+                  </div>
+                </div>
+                <h2 className="account-title">Create an Account</h2>
+              </div>
               <input
                 type="text"
                 placeholder="Username"
@@ -88,7 +119,7 @@ function LogIn() {
               <button
                 type="submit"
                 className="btn"
-                onClick={() => dispatch(regData(regDatas))}
+                onClick={() => dispatch(postData())}
               >
                 Sign Up
               </button>
@@ -108,6 +139,38 @@ function LogIn() {
           </div>
         </div>
       </div>
+      {isOpenModal ? (
+        <div className="modalS">
+          <div className="modalS__content">
+            <div className="modalHeader">
+              <h5>Add Your Account Photo</h5>
+              <i
+                className="material-icons"
+                onClick={() => dispatch(setIsOpenModal(false))}
+              >
+                close
+              </i>
+            </div>
+            <div className="modal-content">
+              <div className="file-field input-field">
+                <div className="btn #2962ff blue accent-4">
+                  <span>
+                    <i className="material-icons">add_a_photo</i>
+                  </span>
+                  <input type="file" />
+                </div>
+                <div className="file-path-wrapper">
+                  <input
+                    className="file-path validate"
+                    type="text"
+                    placeholder="Add Your Photo"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      ) : null}
     </section>
   );
 }

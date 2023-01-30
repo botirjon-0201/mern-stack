@@ -4,6 +4,7 @@ const initialState = {
   user: null,
   profile: null,
   clicked: false,
+  follow: false,
 };
 
 export const userSlice = createSlice({
@@ -19,8 +20,11 @@ export const userSlice = createSlice({
     setClicked(state, action) {
       state.clicked = action.payload;
     },
+    setFollow(state, action) {
+      state.follow = action.payload;
+    },
   },
 });
 
-export const { setUser, setProfile, setClicked } = userSlice.actions;
+export const { setUser, setProfile, setClicked, setFollow } = userSlice.actions;
 export default userSlice.reducer;

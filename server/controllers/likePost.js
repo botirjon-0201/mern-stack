@@ -2,22 +2,13 @@ const mongoose = require("mongoose");
 const Post = mongoose.model("Post");
 
 module.exports = (req, res) => {
-  const attitude = {
-    clickBy: {
-      _id: req.user._id,
-      name: req.user.name,
-    },
-  };
-  Post.find({ _id: req.body.postId })
+  Post.findById(req.body.postId)
     .then((post) => {
-      const indexLike = post[0].likes.findIndex(
-        (item) => item.clickBy._id.toString() === req.user._id.toString()
-      );
-      if (indexLike >= 0) {
+      if (post.likes.includes(req.user._id)) {
         Post.findByIdAndUpdate(
           req.body.postId,
           {
-            $pull: { likes: attitude },
+            $pull: { likes: req.user._id },
           },
           { new: true }
         ).exec((err, result) => {
@@ -28,15 +19,12 @@ module.exports = (req, res) => {
           }
         });
       } else {
-        const indexDislike = post[0].dislikes.findIndex(
-          (item) => item.clickBy._id.toString() === req.user._id.toString()
-        );
-        if (indexDislike >= 0) {
+        if (post.dislikes.includes(req.user._id)) {
           Post.findByIdAndUpdate(
             req.body.postId,
             {
-              $pull: { dislikes: attitude },
-              $push: { likes: attitude },
+              $pull: { dislikes: req.user._id },
+              $push: { likes: req.user._id },
             },
             { new: true }
           ).exec((err, result) => {
@@ -50,7 +38,7 @@ module.exports = (req, res) => {
           Post.findByIdAndUpdate(
             req.body.postId,
             {
-              $push: { likes: attitude },
+              $push: { likes: req.user._id },
             },
             { new: true }
           ).exec((err, result) => {

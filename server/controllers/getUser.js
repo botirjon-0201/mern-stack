@@ -7,10 +7,8 @@ module.exports = (req, res) => {
   User.findById(req.params.id)
     .select("-password")
     .then((user) => {
-      const userId = new ObjectId(req.params.id);
-      Post.find;
       Post.find({
-        postedBy: { _id: userId, name: user.name },
+        postedBy: { _id: req.params.id },
       })
         .populate("postedBy", "_id name")
         .exec((err, posts) => {
