@@ -11,13 +11,16 @@ module.exports = (req, res) => {
             $pull: { likes: req.user._id },
           },
           { new: true }
-        ).exec((err, result) => {
-          if (err) {
-            return res.status(422).json({ error: err });
-          } else {
-            res.json(result);
-          }
-        });
+        )
+          .populate("postedBy", "_id name")
+          .populate("comments.postedBy", "_id name")
+          .exec((err, result) => {
+            if (err) {
+              return res.status(422).json({ error: err });
+            } else {
+              res.json(result);
+            }
+          });
       } else {
         if (post.dislikes.includes(req.user._id)) {
           Post.findByIdAndUpdate(
@@ -27,13 +30,16 @@ module.exports = (req, res) => {
               $push: { likes: req.user._id },
             },
             { new: true }
-          ).exec((err, result) => {
-            if (err) {
-              return res.status(422).json({ error: err });
-            } else {
-              res.json(result);
-            }
-          });
+          )
+            .populate("postedBy", "_id name")
+            .populate("comments.postedBy", "_id name")
+            .exec((err, result) => {
+              if (err) {
+                return res.status(422).json({ error: err });
+              } else {
+                res.json(result);
+              }
+            });
         } else {
           Post.findByIdAndUpdate(
             req.body.postId,
@@ -41,13 +47,16 @@ module.exports = (req, res) => {
               $push: { likes: req.user._id },
             },
             { new: true }
-          ).exec((err, result) => {
-            if (err) {
-              return res.status(422).json({ error: err });
-            } else {
-              res.json(result);
-            }
-          });
+          )
+            .populate("postedBy", "_id name")
+            .populate("comments.postedBy", "_id name")
+            .exec((err, result) => {
+              if (err) {
+                return res.status(422).json({ error: err });
+              } else {
+                res.json(result);
+              }
+            });
         }
       }
     })

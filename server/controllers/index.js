@@ -12,6 +12,8 @@ const followUserController = require("./followUser");
 const unfollowUserController = require("./unfollowUser");
 const getMyFollowingController = require("./getMyFollowing");
 const getMyFollowersController = require("./getMyFollowers");
+const updatePhotoController = require("./updatePhoto");
+const editProfileController = require("./editProfile");
 
 module.exports = {
   signupController,
@@ -28,4 +30,6 @@ module.exports = {
   unfollowUserController,
   getMyFollowingController,
   getMyFollowersController,
+  updatePhotoController,
+  editProfileController,
 };

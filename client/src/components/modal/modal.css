@@ -1,14 +1,34 @@
-.modal-comments {
+.modalS {
   width: 100%;
-  height: 100%;
+  height: 100vh;
   position: fixed;
   top: 0;
-  bottom: 0rem;
+  bottom: 0;
   right: 0;
   left: 0;
-  background-color: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 99999999999;
 }
-.modal-content {
-  max-width: 400px;
+.modalS__content {
+  width: 50%;
   padding: 30px;
+  background: #fff;
+  margin: 100px auto;
+}
+.modalHeader {
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.modalHeader i {
+  cursor: pointer;
+  color: #0d47a1
+
+}
+.modalFooter {
+  margin-top: 15px;
+}
+.edit-name{
+  color: #0d47a1
 }

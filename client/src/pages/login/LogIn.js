@@ -1,40 +1,44 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./login.css";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import {
-  logData,
-  regData,
   setClicked,
-  setIsOpenModal,
   setLogEmail,
   setLogPassword,
   setRegEmail,
   setRegName,
   setRegPassword,
+  signIn,
+  signUp,
   uploadPhoto,
 } from "../../redux/actions";
 
 function LogIn() {
-  const { regName, regEmail, regPassword, isOpenModal } = useSelector(
-    (state) => state.reg
-  );
+  const { regName, regEmail, regPassword } = useSelector((state) => state.reg);
   const { logEmail, logPassword } = useSelector((state) => state.log);
   const { clicked } = useSelector((state) => state.user);
-  const {url} = useSelector(state=>state.post)
+  const { url } = useSelector((state) => state.post);
+  const [image, setImage] = useState("");
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const regDatas = { regName, regEmail, regPassword, clicked, url };
   const logDatas = { logEmail, logPassword, navigate };
-  const [image, setImage] = useState("");
 
-  const postData = () => {
+  const signupData = () => {
     if (image) {
-      uploadPhoto(image);
+      dispatch(uploadPhoto(image));
     } else {
-      regData(regDatas);
+      dispatch(signUp(regDatas));
     }
   };
+
+  useEffect(() => {
+    if (url) {
+      dispatch(signUp(regDatas));
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [url]);
 
   return (
     <section>
@@ -64,7 +68,7 @@ function LogIn() {
               <button
                 type="submit"
                 className="btn"
-                onClick={() => dispatch(logData(logDatas))}
+                onClick={() => dispatch(signIn(logDatas))}
               >
                 Sign in
               </button>
@@ -88,12 +92,28 @@ function LogIn() {
                     className="images"
                   />
                   <div className="middles">
-                    <button
-                      className="btn #2962ff blue accent-4"
-                      onClick={() => dispatch(setIsOpenModal(true))}
+                    <div
+                      id="input-field"
+                      className="file-field input-field add-file"
                     >
-                      <i className="material-icons">add_a_photo</i>
-                    </button>
+                      <div id="icon-add_photo">
+                        <i className="material-icons">add_a_photo</i>
+                        <span>Photo</span>
+                      </div>
+                      <div id="input_photo">
+                        <input
+                          type="file"
+                          onChange={(e) => setImage(e.target.files[0])}
+                        />
+                      </div>
+                      <div id="file-path-wrapper" className="file-path-wrapper">
+                        <input
+                          id="file-path"
+                          className="file-path validate"
+                          type="text"
+                        />
+                      </div>
+                    </div>
                   </div>
                 </div>
                 <h2 className="account-title">Create an Account</h2>
@@ -119,7 +139,7 @@ function LogIn() {
               <button
                 type="submit"
                 className="btn"
-                onClick={() => dispatch(postData())}
+                onClick={() => signupData()}
               >
                 Sign Up
               </button>
@@ -139,38 +159,6 @@ function LogIn() {
           </div>
         </div>
       </div>
-      {isOpenModal ? (
-        <div className="modalS">
-          <div className="modalS__content">
-            <div className="modalHeader">
-              <h5>Add Your Account Photo</h5>
-              <i
-                className="material-icons"
-                onClick={() => dispatch(setIsOpenModal(false))}
-              >
-                close
-              </i>
-            </div>
-            <div className="modal-content">
-              <div className="file-field input-field">
-                <div className="btn #2962ff blue accent-4">
-                  <span>
-                    <i className="material-icons">add_a_photo</i>
-                  </span>
-                  <input type="file" />
-                </div>
-                <div className="file-path-wrapper">
-                  <input
-                    className="file-path validate"
-                    type="text"
-                    placeholder="Add Your Photo"
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      ) : null}
     </section>
   );
 }

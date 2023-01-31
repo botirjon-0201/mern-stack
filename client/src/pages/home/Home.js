@@ -16,7 +16,7 @@ function Home() {
   const { posts, myPosts, showComments } = useSelector((state) => state.post);
   const { user } = useSelector((state) => state.user);
   const dispatch = useDispatch();
-
+  // console.log(posts);
   useEffect(() => {
     fetch("/allposts", {
       method: "GET",
@@ -33,7 +33,7 @@ function Home() {
 
   return (
     <>
-      {posts ? (
+      {posts.length ? (
         <div className="home">
           <div className="post__items">
             <div className="left__side">
@@ -45,7 +45,7 @@ function Home() {
                       <div key={post._id} className="card">
                         <Link
                           to={
-                            post.postedBy === user._id
+                            post.postedBy._id === user._id
                               ? "/profile"
                               : `/profile/${post.postedBy._id}`
                           }

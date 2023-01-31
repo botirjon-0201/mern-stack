@@ -6,7 +6,7 @@ module.exports = (req, res) => {
     text: req.body.text,
     postedBy: req.user.id,
   };
-  
+
   Post.findByIdAndUpdate(
     req.body.postId,
     {
@@ -14,12 +14,12 @@ module.exports = (req, res) => {
     },
     { new: true }
   )
+    .populate("postedBy", "_id name")
     .populate("comments.postedBy", "_id name")
     .exec((err, result) => {
       if (err) {
         return res.status(422).json({ error: err });
       } else {
-        console.log(result.comments[0].postedBy)
         res.json(result);
       }
     });

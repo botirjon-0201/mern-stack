@@ -2,7 +2,7 @@ import M from "materialize-css";
 import { setLogEmail, setLogPassword } from "../reducer/logSlice";
 import { setUser } from "../reducer/userSlice";
 
-export const logData = (props) => (dispatch) => {
+export const signIn = (props) => (dispatch) => {
   const { logEmail, logPassword, navigate } = props;
 
   /* eslint-disable no-useless-escape */

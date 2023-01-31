@@ -1,14 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Grand+Hotel&display=swap");
 
-.navBg a {
-  color: #000 !important;
-}
-.brand-logo {
-  font-family: "Grand Hotel", cursive;
-}
 .navBar {
   width: 100%;
-  height: 10vh;
+  height: 11vh;
   background: #888;
   position: fixed;
   top: 0;

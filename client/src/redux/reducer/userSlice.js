@@ -5,6 +5,8 @@ const initialState = {
   profile: null,
   clicked: false,
   follow: false,
+  isEdit: false,
+  myName: "",
 };
 
 export const userSlice = createSlice({
@@ -23,8 +25,21 @@ export const userSlice = createSlice({
     setFollow(state, action) {
       state.follow = action.payload;
     },
+    setIsEdit(state, action) {
+      state.isEdit = action.payload;
+    },
+    setMyName(state, action) {
+      state.myName = action.payload;
+    },
   },
 });
 
-export const { setUser, setProfile, setClicked, setFollow } = userSlice.actions;
+export const {
+  setUser,
+  setProfile,
+  setClicked,
+  setFollow,
+  setIsEdit,
+  setMyName,
+} = userSlice.actions;
 export default userSlice.reducer;

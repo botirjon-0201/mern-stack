@@ -1,7 +1,6 @@
 const mongoose = require("mongoose");
 const Post = mongoose.model("Post");
 const User = mongoose.model("User");
-const ObjectId = require("mongodb").ObjectId;
 
 module.exports = (req, res) => {
   User.findById(req.params.id)

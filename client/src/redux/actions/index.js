@@ -3,13 +3,10 @@ import {
   setProfile,
   setClicked,
   setFollow,
+  setIsEdit,
+  setMyName,
 } from "../reducer/userSlice";
-import {
-  setRegName,
-  setRegEmail,
-  setRegPassword,
-  setIsOpenModal,
-} from "../reducer/regSlice";
+import { setRegName, setRegEmail, setRegPassword } from "../reducer/regSlice";
 import { setLogEmail, setLogPassword } from "../reducer/logSlice";
 import {
   setTitle,
@@ -19,9 +16,8 @@ import {
   setMyPosts,
   setShowComments,
 } from "../reducer/postSlice";
-import { regData } from "./regData";
-import { logData } from "./logData";
-import { postDetails } from "./postDetails";
+import { signUp } from "./signup";
+import { signIn } from "./signin";
 import { likePost } from "./likePost";
 import { dislikePost } from "./dislikePost";
 import { commentPost } from "./commentPost";
@@ -29,6 +25,8 @@ import { deletePost } from "./deletePost";
 import { followUser } from "./followUser";
 import { unfollowUser } from "./unfollowUser";
 import { uploadPhoto } from "./uploadPhoto";
+import { editProfilePhoto } from "./editProfilePhoto";
+import { editProfile } from "./editProfile";
 
 export {
   setUser,
@@ -38,7 +36,6 @@ export {
   setRegName,
   setRegEmail,
   setRegPassword,
-  setIsOpenModal,
   setLogEmail,
   setLogPassword,
   setTitle,
@@ -46,9 +43,8 @@ export {
   setUrl,
   setPosts,
   setMyPosts,
-  regData,
-  logData,
-  postDetails,
+  signUp,
+  signIn,
   likePost,
   dislikePost,
   commentPost,
@@ -57,4 +53,8 @@ export {
   followUser,
   unfollowUser,
   uploadPhoto,
+  editProfilePhoto,
+  setIsEdit,
+  setMyName,
+  editProfile,
 };

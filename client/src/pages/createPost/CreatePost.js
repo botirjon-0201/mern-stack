@@ -3,7 +3,7 @@ import "./createPost.css";
 import M from "materialize-css";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { postDetails, setBody, setTitle, setUrl } from "../../redux/actions";
+import { setBody, setTitle, setUrl, uploadPhoto } from "../../redux/actions";
 
 function CreatePost() {
   const { title, body, url } = useSelector((state) => state.post);
@@ -94,7 +94,7 @@ function CreatePost() {
         </div>
         <button
           className="btn #2962ff blue accent-4"
-          onClick={() => dispatch(postDetails(image))}
+          onClick={() => dispatch(uploadPhoto(image))}
         >
           Add Post
         </button>
