@@ -23,7 +23,16 @@
 .navLink ul li {
   display: inline-block;
 }
-.navLink ul li a {
+.medium.material-icons {
   padding: 0 10px;
   color: blue;
+}
+.medium.material-icons.exit {
+  color: red;
+}
+.medium.material-icons.modal-trigger {
+  cursor: pointer;
+}
+.modal-footer button {
+  color: #fff;
 }

@@ -16,7 +16,7 @@ function Home() {
   const { posts, myPosts, showComments } = useSelector((state) => state.post);
   const { user } = useSelector((state) => state.user);
   const dispatch = useDispatch();
-  // console.log(posts);
+  
   useEffect(() => {
     fetch("/allposts", {
       method: "GET",
@@ -53,7 +53,7 @@ function Home() {
                           <p className="card-title">
                             Posted by:{" "}
                             <strong className="postedBy">
-                              {post.postedBy.name}
+                              {post.postedBy.name }
                             </strong>
                           </p>
                         </Link>

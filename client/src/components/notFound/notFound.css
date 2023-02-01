@@ -2,6 +2,7 @@
     404 page
 =======================*/
 .page_404 {
+  display: block;
   margin-top: 0;
   padding: 0;
   background: #fff;
@@ -12,7 +13,7 @@
   width: 100%;
 }
 
-.containers{
+.container-notfound {
   margin: 0;
   padding: 0;
   width: 100%;

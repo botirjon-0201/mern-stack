@@ -85,21 +85,21 @@ function Profile() {
           </div>
         </div>
       </div>
-      {myPosts.length ? (
-        myPosts
-          .map((myPost) => {
-            return (
-              <div key={myPost._id} className="gallery">
-                <div className="img-item">
+      <div className={myPosts.length ? "gallery" : "not-found"}>
+        {myPosts.length ? (
+          myPosts
+            .map((myPost) => {
+              return (
+                <div key={myPost._id} className="img-item">
                   <img src={myPost.photo} alt={myPost._id} />
                 </div>
-              </div>
-            );
-          })
-          .reverse()
-      ) : (
-        <NotFound />
-      )}
+              );
+            })
+            .reverse()
+        ) : (
+          <NotFound />
+        )}
+      </div>
       {isEdit ? <Modal /> : null}
     </div>
   );

@@ -5,6 +5,8 @@ import {
   setFollow,
   setIsEdit,
   setMyName,
+  setSearch,
+  setFindUsers,
 } from "../reducer/userSlice";
 import { setRegName, setRegEmail, setRegPassword } from "../reducer/regSlice";
 import { setLogEmail, setLogPassword } from "../reducer/logSlice";
@@ -27,6 +29,7 @@ import { unfollowUser } from "./unfollowUser";
 import { uploadPhoto } from "./uploadPhoto";
 import { editProfilePhoto } from "./editProfilePhoto";
 import { editProfile } from "./editProfile";
+import { searchUser } from "./searchUser";
 
 export {
   setUser,
@@ -57,4 +60,7 @@ export {
   setIsEdit,
   setMyName,
   editProfile,
+  setSearch,
+  searchUser,
+  setFindUsers,
 };

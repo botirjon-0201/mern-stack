@@ -7,6 +7,8 @@ const initialState = {
   follow: false,
   isEdit: false,
   myName: "",
+  search: "",
+  findUsers: [],
 };
 
 export const userSlice = createSlice({
@@ -31,6 +33,12 @@ export const userSlice = createSlice({
     setMyName(state, action) {
       state.myName = action.payload;
     },
+    setSearch(state, action) {
+      state.search = action.payload;
+    },
+    setFindUsers(state, action) {
+      state.findUsers = action.payload;
+    },
   },
 });
 
@@ -41,5 +49,7 @@ export const {
   setFollow,
   setIsEdit,
   setMyName,
+  setSearch,
+  setFindUsers,
 } = userSlice.actions;
 export default userSlice.reducer;

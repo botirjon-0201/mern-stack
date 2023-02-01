@@ -22,7 +22,7 @@ function UserProfile() {
         dispatch(setProfile(data));
       });
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [userId]);
 
   return (
     <>
@@ -32,7 +32,7 @@ function UserProfile() {
             <div>
               <img
                 className="profileImg"
-                src="https://images.unsplash.com/photo-1540569014015-19a7be504e3a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=435&q=80"
+                src={profile.user.photo}
                 alt="profile"
               />
             </div>
