@@ -122,7 +122,7 @@ function Home() {
                                   >
                                     <p>{comment.text}</p>
                                     <p>
-                                      Posted by: <b>{comment.postedBy.name}</b>
+                                      Cooment by: <b>{comment.commentBy.name}</b>
                                     </p>
                                   </div>
                                 );

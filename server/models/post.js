@@ -1,5 +1,13 @@
 const { Schema, model } = require("mongoose");
 
+const commentSchema = new Schema({
+  text: String,
+  commentBy: {
+    type: Schema.Types.ObjectId,
+    ref: "User",
+  },
+});
+
 const postSchema = new Schema({
   title: {
     type: String,
@@ -25,15 +33,7 @@ const postSchema = new Schema({
       ref: "User",
     },
   ],
-  comments: [
-    {
-      text: String,
-      postedBy: {
-        type: Schema.Types.ObjectId,
-        ref: "User",
-      },
-    },
-  ],
+  comments: [commentSchema],
   postedBy: {
     type: Schema.Types.ObjectId,
     ref: "User",

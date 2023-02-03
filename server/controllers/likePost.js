@@ -13,7 +13,7 @@ module.exports = (req, res) => {
           { new: true }
         )
           .populate("postedBy", "_id name")
-          .populate("comments.postedBy", "_id name")
+          .populate("comments.commentBy", "_id name")
           .exec((err, result) => {
             if (err) {
               return res.status(422).json({ error: err });
@@ -32,7 +32,7 @@ module.exports = (req, res) => {
             { new: true }
           )
             .populate("postedBy", "_id name")
-            .populate("comments.postedBy", "_id name")
+            .populate("comments.commentBy", "_id name")
             .exec((err, result) => {
               if (err) {
                 return res.status(422).json({ error: err });
@@ -49,7 +49,7 @@ module.exports = (req, res) => {
             { new: true }
           )
             .populate("postedBy", "_id name")
-            .populate("comments.postedBy", "_id name")
+            .populate("comments.commentBy", "_id name")
             .exec((err, result) => {
               if (err) {
                 return res.status(422).json({ error: err });
