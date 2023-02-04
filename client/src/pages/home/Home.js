@@ -16,12 +16,12 @@ function Home() {
   const { posts, myPosts, showComments } = useSelector((state) => state.post);
   const { user } = useSelector((state) => state.user);
   const dispatch = useDispatch();
-  
+
   useEffect(() => {
     fetch("/allposts", {
       method: "GET",
       headers: {
-        Authorization: "Sammi " + localStorage.getItem("jwt"),
+        Authorization: localStorage.getItem("jwt"),
       },
     })
       .then((res) => res.json())
@@ -53,7 +53,7 @@ function Home() {
                           <p className="card-title">
                             Posted by:{" "}
                             <strong className="postedBy">
-                              {post.postedBy.name }
+                              {post.postedBy.name}
                             </strong>
                           </p>
                         </Link>
@@ -122,7 +122,8 @@ function Home() {
                                   >
                                     <p>{comment.text}</p>
                                     <p>
-                                      Cooment by: <b>{comment.commentBy.name}</b>
+                                      Cooment by:{" "}
+                                      <b>{comment.commentBy.name}</b>
                                     </p>
                                   </div>
                                 );

@@ -5,7 +5,7 @@ export const deletePost = (postId, posts, myPosts) => (dispatch) => {
   fetch(`/deletepost/${postId}`, {
     method: "DELETE",
     headers: {
-      Authorization: "Sammi " + localStorage.getItem("jwt"),
+      Authorization: localStorage.getItem("jwt"),
     },
   })
     .then((res) => res.json())

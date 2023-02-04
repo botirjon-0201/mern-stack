@@ -17,7 +17,7 @@ function CreatePost() {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          Authorization: "Sammi " + localStorage.getItem("jwt"),
+          Authorization: localStorage.getItem("jwt"),
         },
         body: JSON.stringify({
           title,

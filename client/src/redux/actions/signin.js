@@ -5,14 +5,9 @@ import { setUser } from "../reducer/userSlice";
 export const signIn = (props) => (dispatch) => {
   const { logEmail, logPassword, navigate } = props;
 
-  /* eslint-disable no-useless-escape */
-  if (
-    !/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
-      logEmail
-    )
-  ) {
+  if (!logEmail || !logPassword) {
     return M.toast({
-      html: "Please, enter your email correctly!",
+      html: "Please, add all the fields!",
       classes: "#ff1744 red accent-3",
     });
   } else {
@@ -31,10 +26,7 @@ export const signIn = (props) => (dispatch) => {
         if (data.error) {
           M.toast({ html: data.error, classes: "#ff1744 red accent-3" });
         } else {
-          M.toast({
-            html: "You have signed in successfully!",
-            classes: "#2e7d32 green darken-3",
-          });
+          M.toast({ html: data.msg, classes: "#2e7d32 green darken-3" });
           localStorage.setItem("jwt", data.token);
           localStorage.setItem("user", JSON.stringify(data.user));
           dispatch(setUser(data.user));

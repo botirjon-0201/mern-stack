@@ -1,35 +1,30 @@
 const mongoose = require("mongoose");
 const User = mongoose.model("User");
+const { validate } = require("../validations/validateUser");
 const bcrypt = require("bcryptjs");
 
-module.exports = (req, res) => {
-  const { name, email, password, photo } = req.body;
-  if (!name || !email || !password) {
-    res.status(422).json({ error: "Please, add all the fields" });
+module.exports = async (req, res) => {
+  const { error } = validate(req.body);
+  if (error) {
+    return res.status(400).json({ error: error.details[0].message });
   } else {
-    User.findOne({ email }).then((savedUser) => {
-      if (savedUser) {
-        return res
-          .status(422)
-          .json({ error: "Already was signed up with that email" });
-      } else {
-        bcrypt.hash(password, 10).then((hashedPass) => {
-          const user = new User({
-            name,
-            email,
-            password: hashedPass,
-            photo,
-          });
-          user
-            .save()
-            .then((user) => {
-              res.json({ msg: "You have signed up successfully!" });
-            })
-            .catch((err) => {
-              console.log(err);
-            });
-        });
-      }
-    });
+    const { name, email, password, photo } = req.body;
+    const savedUser = await User.findOne({ email });
+    if (savedUser) {
+      return res
+        .status(400)
+        .json({ error: "Already was signed up with that email" });
+    } else {
+      const salt = bcrypt.genSalt();
+      const hashedPass = await bcrypt.hash(password, 10);
+      const user = new User({
+        name,
+        email,
+        password: hashedPass,
+        photo,
+      });
+      await user.save();
+      res.json({ msg: "You have signed up successfully!" });
+    }
   }
 };

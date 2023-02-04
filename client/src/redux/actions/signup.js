@@ -5,15 +5,9 @@ import { setClicked } from "../reducer/userSlice";
 
 export const signUp = (props) => (dispatch) => {
   const { regName, regEmail, regPassword, clicked, url } = props;
-
-  /* eslint-disable no-useless-escape */
-  if (
-    !/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
-      regEmail
-    )
-  ) {
+  if (!regName || !regEmail || !regPassword) {
     return M.toast({
-      html: "Please, enter your email correctly!",
+      html: "Please, add all the fields!",
       classes: "#ff1744 red accent-3",
     });
   } else {

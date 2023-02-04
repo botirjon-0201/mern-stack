@@ -16,7 +16,7 @@ export const editProfilePhoto = (image, user) => (dispatch) => {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
-          Authorization: "Sammi " + localStorage.getItem("jwt"),
+          Authorization: localStorage.getItem("jwt"),
         },
         body: JSON.stringify({
           photo: data.url,

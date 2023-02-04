@@ -5,7 +5,7 @@ export const commentPost = (text, postId, posts) => (dispatch) => {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
-      Authorization: "Sammi " + localStorage.getItem("jwt"),
+      Authorization: localStorage.getItem("jwt"),
     },
     body: JSON.stringify({
       text,
