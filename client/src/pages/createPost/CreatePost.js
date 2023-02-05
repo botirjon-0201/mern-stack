@@ -10,9 +10,16 @@ function CreatePost() {
   const [image, setImage] = useState("");
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  console.log(url);
 
   useEffect(() => {
-    if (url) {
+    if (!title || !body || !url) {
+      M.toast({
+        html: "Please, add all the fields",
+        classes: "#2e7d32 green darken-3",
+      });
+      return;
+    } else {
       fetch("/createpost", {
         method: "POST",
         headers: {

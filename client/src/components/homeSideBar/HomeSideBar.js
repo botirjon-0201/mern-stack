@@ -10,7 +10,7 @@ function HomeSideBar() {
     fetch("/myposts", {
       method: "GET",
       headers: {
-        Authorization: "Sammi " + localStorage.getItem("jwt"),
+        Authorization: localStorage.getItem("jwt"),
       },
     })
       .then((res) => res.json())

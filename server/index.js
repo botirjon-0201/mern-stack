@@ -1,11 +1,19 @@
 const express = require("express");
 const mongoose = require("mongoose");
-const { MONGO_URI } = require("./keys");
 const app = express();
+const config = require("config");
+const { MONGO_URI } = require("./keys");
 const PORT = process.env.PORT || 5000;
 
 require("./models/user");
 require("./models/post");
+
+// if (!config.get("jwtPrivateKey")) {
+//   console.log(
+//     "Error: mern-stack_jwtPrivateKey environment variable is not defined!"
+//   );
+//   process.exit(1);
+// }
 
 app.use(express.json());
 app.use(require("./routes/auth"));

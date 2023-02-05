@@ -4,7 +4,6 @@ import { setUser } from "../reducer/userSlice";
 
 export const signIn = (props) => (dispatch) => {
   const { logEmail, logPassword, navigate } = props;
-
   if (!logEmail || !logPassword) {
     return M.toast({
       html: "Please, add all the fields!",

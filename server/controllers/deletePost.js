@@ -1,12 +1,16 @@
 const mongoose = require("mongoose");
 const Post = mongoose.model("Post");
 
-module.exports = (req, res) => {
-  Post.findByIdAndDelete(req.params.postId, (err, post) => {
-    if (err) {
-      res.status(422).json({ error: err });
-    } else {
-      res.json(post);
-    }
-  });
+module.exports = async (req, res) => {
+  try {
+    await Post.findByIdAndDelete(req.params.postId, (error, post) => {
+      if (error) {
+        return res.status(404).json({ error });
+      } else {
+        res.json(post);
+      }
+    });
+  } catch (error) {
+    console.log(error);
+  }
 };

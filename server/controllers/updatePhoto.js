@@ -6,9 +6,9 @@ module.exports = (req, res) => {
     req.user._id,
     { $set: { photo: req.body.photo } },
     { new: true },
-    (err, result) => {
-      if (err) {
-        return res.status(422).json({ err: "Photo can not posted" });
+    (error, result) => {
+      if (error) {
+        return res.status(404).json({ err: "Photo can not posted" });
       }
       res.json(result);
     }
