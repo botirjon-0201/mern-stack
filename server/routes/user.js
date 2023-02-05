@@ -1,19 +1,19 @@
 const router = require("express").Router();
 const { loginMiddleware } = require("../middlewares");
 const {
-  getUserController,
-  followUserController,
-  unfollowUserController,
-  updatePhotoController,
-  editProfileController,
-  searchUserController,
-} = require("../controllers");
+  getUser,
+  followUser,
+  unfollowUser,
+  updatePhoto,
+  updateProfile,
+  searchUser,
+} = require("../controllers/user.controller");
 
-router.get("/user/:id", loginMiddleware, getUserController);
-router.put("/follow", loginMiddleware, followUserController);
-router.put("/unfollow", loginMiddleware, unfollowUserController);
-router.put("/updatephoto", loginMiddleware, updatePhotoController);
-router.put("/editprofile", loginMiddleware, editProfileController);
-router.post("/searchuser", searchUserController);
+router.get("/user/:id", loginMiddleware, getUser);
+router.put("/follow", loginMiddleware, followUser);
+router.put("/unfollow", loginMiddleware, unfollowUser);
+router.put("/updatephoto", loginMiddleware, updatePhoto);
+router.put("/editprofile", loginMiddleware, updateProfile);
+router.post("/searchuser", searchUser);
 
 module.exports = router;

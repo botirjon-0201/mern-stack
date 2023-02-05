@@ -1,25 +1,25 @@
 const router = require("express").Router();
 const { loginMiddleware } = require("../middlewares");
 const {
-  getAllPostsController,
-  createPostController,
-  getMyPostsController,
-  likePostController,
-  dislikePostController,
-  commentPostController,
-  deletePostController,
-  getMyFollowingController,
-  getMyFollowersController,
-} = require("../controllers");
+  getAllPosts,
+  createPost,
+  getMyPosts,
+  likePost,
+  dislikePost,
+  commentPost,
+  deletePost,
+  getMyFollowing,
+  getMyFollowers,
+} = require("../controllers/post.controller");
 
-router.get("/allposts", loginMiddleware, getAllPostsController);
-router.post("/createpost", loginMiddleware, createPostController);
-router.get("/myposts", loginMiddleware, getMyPostsController);
-router.put("/like", loginMiddleware, likePostController);
-router.put("/dislike", loginMiddleware, dislikePostController);
-router.put("/comments", loginMiddleware, commentPostController);
-router.delete("/deletepost/:postId", loginMiddleware, deletePostController);
-router.get("/myfollowing", loginMiddleware, getMyFollowingController);
-router.get("/myfollowers", loginMiddleware, getMyFollowersController);
+router.get("/allposts", loginMiddleware, getAllPosts);
+router.post("/createpost", loginMiddleware, createPost);
+router.get("/myposts", loginMiddleware, getMyPosts);
+router.put("/like", loginMiddleware, likePost);
+router.put("/dislike", loginMiddleware, dislikePost);
+router.put("/comments", loginMiddleware, commentPost);
+router.delete("/deletepost/:postId", loginMiddleware, deletePost);
+router.get("/myfollowing", loginMiddleware, getMyFollowing);
+router.get("/myfollowers", loginMiddleware, getMyFollowers);
 
 module.exports = router;

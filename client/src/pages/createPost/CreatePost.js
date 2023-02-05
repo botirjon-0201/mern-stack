@@ -13,13 +13,7 @@ function CreatePost() {
   console.log(url);
 
   useEffect(() => {
-    if (!title || !body || !url) {
-      M.toast({
-        html: "Please, add all the fields",
-        classes: "#2e7d32 green darken-3",
-      });
-      return;
-    } else {
+    if (url) {
       fetch("/createpost", {
         method: "POST",
         headers: {

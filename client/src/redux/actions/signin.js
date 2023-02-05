@@ -33,6 +33,6 @@ export const signIn = (props) => (dispatch) => {
           dispatch(setLogPassword(""));
           navigate("/");
         }
-      });
+      })
   }
 };

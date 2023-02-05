@@ -12,4 +12,4 @@ function validateAuth(req) {
   return schema.validate(req);
 }
 
-exports.validate = validateAuth;
+module.exports = validateAuth;
