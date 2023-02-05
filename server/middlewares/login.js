@@ -9,15 +9,14 @@ module.exports = (req, res, next) => {
     return res.status(401).json({ error: "You must be logged in" });
   } else {
     const token = authorization;
-    jwt.verify(token, JWT_SECRET, (err, payload) => {
-      if (err) {
-        return res.status(401).json({ error: "You must be logged in" });
-      } else {
+    jwt.verify(token, JWT_SECRET, async (error, payload) => {
+      try {
         const { _id } = payload;
-        User.findById(_id).then((userData) => {
-          req.user = userData;
-          next();
-        });
+        const userData = await User.findById(_id);
+        req.user = userData;
+        next();
+      } catch (error) {
+        return res.status(401).json({ error: "You must be logged in" });
       }
     });
   }
