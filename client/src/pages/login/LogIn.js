@@ -15,30 +15,31 @@ import {
 } from "../../redux/actions";
 
 function LogIn() {
-  const { regName, regEmail, regPassword } = useSelector((state) => state.reg);
+  const { regName, regEmail, regPassword, urlProfPhoto } = useSelector(
+    (state) => state.reg
+  );
   const { logEmail, logPassword } = useSelector((state) => state.log);
   const { clicked } = useSelector((state) => state.user);
-  const { url } = useSelector((state) => state.post);
   const [image, setImage] = useState("");
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const regDatas = { regName, regEmail, regPassword, clicked, url };
+  const regDatas = { regName, regEmail, regPassword, clicked, urlProfPhoto };
   const logDatas = { logEmail, logPassword, navigate };
 
   const signupData = () => {
     if (image) {
-      dispatch(uploadPhoto(image));
+      dispatch(uploadPhoto(image, true));
     } else {
       dispatch(signUp(regDatas));
     }
   };
 
   useEffect(() => {
-    if (url) {
+    if (urlProfPhoto) {
       dispatch(signUp(regDatas));
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [url]);
+  }, [urlProfPhoto]);
 
   return (
     <section>

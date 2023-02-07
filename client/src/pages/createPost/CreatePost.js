@@ -10,7 +10,6 @@ function CreatePost() {
   const [image, setImage] = useState("");
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  console.log(url);
 
   useEffect(() => {
     if (url) {

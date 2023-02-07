@@ -2,8 +2,8 @@ const mongoose = require("mongoose");
 const User = mongoose.model("User");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
-const { JWT_SECRET } = require("../keys");
-const config = require("config");
+const { config } = require("../config/dotenv");
+
 const validateUser = require("../validations/validateUser");
 const validateAuth = require("../validations/validateAuth");
 
@@ -56,7 +56,10 @@ const signin = async (req, res) => {
           return res.status(400).json({ error: "Invalid password" });
         } else {
           // const token = savedUser.generateToken()  // Ustozdan so'rash kerak
-          const token = jwt.sign({ _id: savedUser._id }, JWT_SECRET);
+          const token = jwt.sign(
+            { _id: savedUser._id },
+            config.server.jwtSecret()
+          );
           const { _id, name, email, photo, followers, following } = savedUser;
           res.json({
             token: token,

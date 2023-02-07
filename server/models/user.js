@@ -44,4 +44,4 @@ const userSchema = new Schema({
 //   return token;
 // };
 
-model("User", userSchema);
+model("User", userSchema); 

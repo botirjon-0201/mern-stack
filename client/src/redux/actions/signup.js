@@ -1,10 +1,14 @@
 import M from "materialize-css";
-import { setUrl } from "../reducer/postSlice";
-import { setRegEmail, setRegName, setRegPassword } from "../reducer/regSlice";
+import {
+  setRegEmail,
+  setRegName,
+  setRegPassword,
+  setUrlProfPhoto,
+} from "../reducer/regSlice";
 import { setClicked } from "../reducer/userSlice";
 
 export const signUp = (props) => (dispatch) => {
-  const { regName, regEmail, regPassword, clicked, url } = props;
+  const { regName, regEmail, regPassword, clicked, urlProfPhoto } = props;
   if (!regName || !regEmail || !regPassword) {
     return M.toast({
       html: "Please, add all the fields!",
@@ -20,7 +24,9 @@ export const signUp = (props) => (dispatch) => {
         name: regName,
         email: regEmail,
         password: regPassword,
-        photo: url,
+        photo:
+          urlProfPhoto ||
+          "https://res.cloudinary.com/dzafzrmxl/image/upload/v1675005677/User-avatar.svg_eivvxo.png",
       }),
     })
       .then((res) => res.json())
@@ -33,7 +39,7 @@ export const signUp = (props) => (dispatch) => {
           dispatch(setRegName(""));
           dispatch(setRegEmail(""));
           dispatch(setRegPassword(""));
-          dispatch(setUrl(""));
+          dispatch(setUrlProfPhoto(""));
         }
       });
   }

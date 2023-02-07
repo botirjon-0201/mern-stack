@@ -4,6 +4,7 @@ const initialState = {
   regName: "",
   regEmail: "",
   regPassword: "",
+  urlProfPhoto: "",
 };
 
 export const regSlice = createSlice({
@@ -19,9 +20,12 @@ export const regSlice = createSlice({
     setRegPassword(state, action) {
       state.regPassword = action.payload;
     },
+    setUrlProfPhoto(state, action) {
+      state.urlProfPhoto = action.payload;
+    },
   },
 });
 
-export const { setRegName, setRegEmail, setRegPassword, setIsOpenModal } =
+export const { setRegName, setRegEmail, setRegPassword, setUrlProfPhoto } =
   regSlice.actions;
 export default regSlice.reducer;

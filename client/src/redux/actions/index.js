@@ -8,7 +8,12 @@ import {
   setSearch,
   setFindUsers,
 } from "../reducer/userSlice";
-import { setRegName, setRegEmail, setRegPassword } from "../reducer/regSlice";
+import {
+  setRegName,
+  setRegEmail,
+  setRegPassword,
+  setUrlProfPhoto,
+} from "../reducer/regSlice";
 import { setLogEmail, setLogPassword } from "../reducer/logSlice";
 import {
   setTitle,
@@ -39,6 +44,7 @@ export {
   setRegName,
   setRegEmail,
   setRegPassword,
+  setUrlProfPhoto,
   setLogEmail,
   setLogPassword,
   setTitle,

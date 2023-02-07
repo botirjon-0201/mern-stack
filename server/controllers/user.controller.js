@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 const Post = mongoose.model("Post");
 const User = mongoose.model("User");
 
+
 const getUser = async (req, res) => {
   try {
     const user = await User.findById(req.params.id).select("-password");

@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const User = mongoose.model("User");
 const jwt = require("jsonwebtoken");
-const { JWT_SECRET } = require("../keys");
+const { config } = require("../config/dotenv");
 
 module.exports = (req, res, next) => {
   const { authorization } = req.headers;
@@ -9,7 +9,7 @@ module.exports = (req, res, next) => {
     return res.status(401).json({ error: "You must be logged in" });
   } else {
     const token = authorization;
-    jwt.verify(token, JWT_SECRET, async (error, payload) => {
+    jwt.verify(token, config.server.jwtSecret(), async (error, payload) => {
       try {
         const { _id } = payload;
         const userData = await User.findById(_id);
