@@ -1,4 +1,0 @@
-{
-  "jwtPrivateKey": "mern-stack_jwtPrivateKey",
-  "MONGO_URI": "mongodb://localhost/demogramm"
-}
